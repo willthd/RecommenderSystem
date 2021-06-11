@@ -2,16 +2,42 @@
 
 > Generate candidates -> Apply constraint -> Ranking
 
-**종류**
+## Algorithm
 
-- Content based filtering : 콘텐트 간의 유사도 활용(여기서 유사도는 보통 코사인 유사도를 의미)
-- Collaborative filtering : 협업 필터링(사용자가 평가한 다른 아이템을 기반으로 사용자가 평가하지 않은 아이템의 예측 평가를 도출하는 방식)
-  - Nearest Neighbor : 최근접 이웃 협업 필터링(index 간의 유사도 확인)
-    - User-User : User가 Index, Item이 Feature. 나와 비슷한 다른 사람들이 어떤 종목을 선택했는지 추천.
-    - Item-Item : Item이 Index, User가 Feature. 일반적으로 User-User보다 더 자주 사용됨. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
-  - Latent Factor : 잠재 요인 협업 필터링
+- **Contents based filtering**
 
+  > 콘텐트 간의 유사도 활용(여기서 유사도는 보통 코사인 유사도를 의미)해 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심.
 
+  * 장점
+    * 다른 유저의 데이터가 필요하지 않음.
+    * 추천할 수 있는 아이템의 범위가 넓음.(Unique, New, Unpopular 아이템 모두 가능)
+    * 추천시스템이 추천한 이유 설명 가능.(특정 feature 기반으로 분석)
+
+  * 단점
+
+    * 적절한 feature 찾는 것이 어려움.
+    * 데이터가 부족한 새로운 user를 위한 추천이 어려움.
+    * 선호하는 특성을 가진 항목을 반복 추천하기 때문에 유저의 다양한 취향을 반영하기 어렵고, user profile과 관련되지 않은 아이템은 추천되지 않음.
+
+  * Architecture
+
+    ![architecture](./contents_arch.png)
+
+  * Key
+
+    * Contents Analyzer의 알고리즘을 TF-IDF, ML, Clustering등 어떤 것을 적절하게 선택하는지가 중요.
+
+</br>
+
+* **Collaborative Filtering**
+
+  > 협업 필터링(사용자가 평가한 다른 아이템을 기반으로 사용자가 평가하지 않은 아이템의 예측 평가를 도출하는 방식)
+
+  * Nearest Neighbor : 최근접 이웃 협업 필터링(index 간의 유사도 확인)
+    * User-User : User가 Index, Item이 Feature. 나와 비슷한 다른 사람들이 어떤 종목을 선택했는지 추천.
+    * Item-Item : Item이 Index, User가 Feature. 일반적으로 User-User보다 더 자주 사용됨. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
+
+  * Latent Factor : 잠재 요인 협업 필터링
 
 이이템 기반 최근접 이웃 방식은 '아이템 간의 속성'이 얼마나 비슷한지를 기반으로 추천한다고 착각할 수 있다. 하지만 컨텐츠 기반 필터링은 컨텐츠 간의 유사도만을 가지고 측정한 것이고, 아이템 기반 협업 필터링은 개인적인 취향을 반영한 것이다. 주의
 
