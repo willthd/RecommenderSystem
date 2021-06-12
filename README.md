@@ -72,7 +72,7 @@ SVD는 Null이 없는 행렬에만 적용할 수 있기 때문에 확률적 경�
 ## 평가 지표
 
 추천 시스템은 regression 또는 ranking 문제로 분류되는데 regression의 경우 일반적으로 rmse 평가 지표를 사용하고, ranking 문제에선 일반적으로 ndcg(normalized discounted cumulative gain)사용한다.
-ndcg 참고, https://ride-or-die.info/normalized-discounted-cumulative-gain/
+ndcg 참고, https://blog.naver.com/stu5073/222203260105
 
 </br>
 
