@@ -6,7 +6,7 @@
 
 - **Contents based filtering**
 
-  > 콘텐트 간의 유사도 활용(여기서 유사도는 보통 코사인 유사도를 의미)해 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심.
+  > 콘텐트 간의 유사도 활용(여기서 유사도는 보통 코사인 유사도를 의미)해 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심. KNN, 나이브 베이즈 알고리즘 주로 사용.
 
   * 장점
     * 다른 유저의 데이터가 필요하지 않음.
@@ -23,9 +23,16 @@
 
     ![architecture](./contents_arch.png)
 
+    User profile 학습(Profile Learner)은 classification 문제를 푸는 것과 유사하다고 볼 수 있음.
+
   * Key
 
     * Contents Analyzer의 알고리즘을 TF-IDF, ML, Clustering등 어떤 것을 적절하게 선택하는지가 중요.
+
+  * Algorithm
+
+    * KNN : K는 보통 홀수로 지정하며, 적절한 K를 설정하는 것 중요(grid search). 유클리드 거리 기반으로 근접 정도 측정. 각 feature간의 normalization 필수(min-max scaling 등)
+    * Naive Bayes : feature간 서로 독립적이어야 효과적. Continuous한 값보다 Discrete한 variable에서 더 효과적(독립 가정 좀 더 부합). 데이터 차원이 높아질 수록 모든 class에 대한 확률이 0으로 수렴 가능하며 이때 Laplace smoothing 활용.
 
 </br>
 
