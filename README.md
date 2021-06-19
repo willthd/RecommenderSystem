@@ -6,7 +6,7 @@
 
 - **Contents based filtering**
 
-  > 콘텐트 간의 유사도 활용(여기서 유사도는 보통 코사인 유사도를 의미)해 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심. KNN, 나이브 베이즈 알고리즘 주로 사용.
+  > 콘텐트 간의 연관성 활용해(cos similarity, 유클리디안 거리 등) 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심. KNN, 나이브 베이즈 알고리즘 주로 사용.
 
   * 장점
     * 다른 유저의 데이터가 필요하지 않음.
@@ -36,13 +36,20 @@
 
 </br>
 
-* **Collaborative Filtering**
+* **Neighborhood-based(Memory-based)**
 
-  > 협업 필터링(사용자가 평가한 다른 아이템을 기반으로 사용자가 평가하지 않은 아이템의 예측 평가를 도출하는 방식)
+  > 이웃 기반 협업 필터링(index 간의 유사도 확인)
 
-  * Nearest Neighbor : 최근접 이웃 협업 필터링(index 간의 유사도 확인)
-    * User-User : User가 Index, Item이 Feature. 나와 비슷한 다른 사람들이 어떤 종목을 선택했는지 추천.
-    * Item-Item : Item이 Index, User가 Feature. 일반적으로 User-User보다 더 자주 사용됨. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
+  * User-based : User가 Index(사용자 기반으로 유사도 계산), Item이 Feature. 나와 비슷한 평점을 메긴 다른 사람들이 어떤 종목을 선택했는지 추천.
+  * Item-based : Item이 Index(아이템 기반으로 유사도 계산), User가 Feature. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
+  * 선택
+    * 보통 User 수 < Iterm인 경우 User-based, User 수 > Item인 경우 Item-based 사용. 이유는 더 적은 것을 기준으로해야 matrix가 덜 sparse해지기 때문.
+    * 주로 Item 수가 크게 변하지 않는다면, Item-based, User 수가 크게 변하지 않는다면, User-based 사용.
+    * User-based는 과거 아이템 데이터에 의존하기 때문에 새로운 추천이 어려운 반면, Item-based는 여러 유저 데이터를 활용하기 때문에 새로운 추천이 수월함.
+  * 단점
+    * Cold-Start : 유저에 대한 아무런 기록이 없다면, 새로운 아이템에 대한 아무런 정보 없다면, 추천 불가능.
+    * 데이터가 많아야 추천 품질 좋아지지만, 계산량 많아짐(Trade-Off).
+    * Long-Tail Economy : 관심이 쏠린 아이템만 계속 추천되고, 관심이 상대적으로 적은 아이템은 추천되지 않음.
 
   * Latent Factor : 잠재 요인 협업 필터링
 
