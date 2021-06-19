@@ -83,6 +83,13 @@ SVD는 Null이 없는 행렬에만 적용할 수 있기 때문에 확률적 경�
 
 </br>
 
+## 유사도
+
+* Euclidean-distance(거리)
+* Cos similarity(각도)
+* Peason similarity : 정규화 된 Cos similarity. 예를 들어 A유저가 5개의 아이템에 모두 5점, B유저가 동일한 5개의 아이템에 모두 1점을 부여했을 경우, Cos similarity는 1을 갖지만, Pearson similarity는 그렇지 않음.
+* Jaccard similarity(집합)
+
 ## 평가 지표
 
 추천 시스템은 regression 또는 ranking 문제로 분류되는데 regression의 경우 일반적으로 rmse 평가 지표를 사용하고, ranking 문제에선 일반적으로 ndcg(normalized discounted cumulative gain)사용한다.
