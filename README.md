@@ -79,10 +79,18 @@
     * Matrix Factorization(Latent Factor) - SVD(Singular Value Decomposition), NMF(Non-Negative Matrix Factorization)
     * Provavilistic Models - Clustring, Bayes Rules
     * Etc - SVM, Logistic Regression, Deep Learning
+
   * Matrix Factorization(Latent Facter)
+
     * User와 Item이 같은 vector 공간에 표현됨.
+
     * Matrix Completion 문제(User-Item matrix를 User-Latent Factor, Latent Factor-Item으로 분해).
-    * 
+
+    * implicit feedback(ex-User가 직접 메긴 평점 말고, User가 활동하면서 자연스럽게 남는 log 데이터) 활용 할 수 있음.
+
+      Data의 종류(explicit and implicit)
+
+      ![kinds_data](./image/kinds_data.png)
 
 
 
