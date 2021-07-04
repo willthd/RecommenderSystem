@@ -40,16 +40,19 @@
 
   > 이웃 기반 협업 필터링(index 간의 유사도 확인)
 
-  * User-based : User가 Index(사용자 기반으로 유사도 계산), Item이 Feature. 나와 비슷한 평점을 메긴 다른 사람들이 어떤 종목을 선택했는지 추천.
+  * 종류
+    * User-based : User가 Index(사용자 기반으로 유사도 계산), Item이 Feature. 나와 비슷한 평점을 메긴 다른 사람들이 어떤 종목을 선택했는지 추천.
 
-  * Item-based : Item이 Index(아이템 기반으로 유사도 계산), User가 Feature. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
+    * Item-based : Item이 Index(아이템 기반으로 유사도 계산), User가 Feature. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
 
-    ![user_based](./image/item_based.png)
+      ![user_based](./image/item_based.png)
 
   * 선택
 
-    * 보통 User 수 < Iterm인 경우 User-based, User 수 > Item인 경우 Item-based 사용. 이유는 더 적은 것을 기준으로해야 matrix가 덜 sparse해지기 때문.
+    * 보통 User 수 < Item인 경우 User-based, User 수 > Item인 경우 Item-based 사용. 이유는 더 적은 것을 기준으로해야 matrix가 덜 sparse해지기 때문.
     * 주로 Item 수가 크게 변하지 않는다면, Item-based, User 수가 크게 변하지 않는다면, User-based 사용.
+    * 일반적으로 최근접 이웃 협업 필터링은 사용자 기반 보다는 아이템 기반 필터링이 정확도가 더 높음.
+      (이유는 비슷한 영화를 좋아한다고 해서 사람들의 취향이 비슷하다고 판단하기는 어려운 경우가 많기 때문이다. 매우 유명한 영화는 취향과 관계없이 대부분의 사람이 관람하는 경우가 많고, 사용자들이 평점을 매긴 영화의 개수가 많지 않은 경우가 일반적인데 이를 기반으로 다른 사람과의 유사도를 비교하기 어려운 부분도 있기 때문)
     * User-based는 과거 아이템 데이터에 의존하기 때문에 새로운 추천이 어려운 반면, Item-based는 여러 유저 데이터를 활용하기 때문에 새로운 추천이 수월함.
     * 새로운 user, item이 추가되더라도 비교적 안정적.
 
@@ -59,19 +62,29 @@
     * 데이터가 많아야 추천 품질 좋아지지만, 계산량 많아짐(Trade-Off).
     * Long-Tail Economy : 관심이 쏠린 아이템만 계속 추천되고, 관심이 상대적으로 적은 아이템은 추천되지 않음.
 
-  * Latent Factor : 잠재 요인 협업 필터링
+</be>
 
 * **Model-based collaborative filtering**
 
-* 
+  >  항목간 유사성에서 벗어나 데이터의 패턴을 학습해 데이터의 잠재적 특성을 파악
 
-이이템 기반 최근접 이웃 방식은 '아이템 간의 속성'이 얼마나 비슷한지를 기반으로 추천한다고 착각할 수 있다. 하지만 컨텐츠 기반 필터링은 컨텐츠 간의 유사도만을 가지고 측정한 것이고, 아이템 기반 협업 필터링은 개인적인 취향을 반영한 것이다. 주의
+  * 장점
+    * 압축된 형태로 데이터 저장해 모델의 크기 이득.
+    * 미리 학습된 모델 준비 가능해 속도 이득(Neighbothood-based는 미리 학습 개념 아님).
+    * Neighbothood-based는 데이터가 존재하는 것에 dependent가 크기 때문에 sparse 데이터 처리가 어려운 반면 Model-based는 좀 더 학습 과정을 거치며 좀 더 탁월한 처리 기대할 수 있음.
+    * 데이터를 다양하게 학습해 새로운 추천 가능.
 
-일반적으로 최근접 이웃 협업 필터링은 사용자 기반 보다는 아이템 기반 필터링이 정확도가 더 높다. 이유는 비슷한 영화를 좋아한다고 해서 사람들의 취향이 비슷하다고 판단하기는 어려운 경우가 많기 때문이다. 매우 유명한 영화는 취향과 관계없이 대부분의 사람이 관람하는 경우가 많고, 사용자들이 평점을 매긴 영화의 개수가 많지 않은 경우가 일반적인데 이를 기반으로 다른 사람과의 유사도를 비교하기 어려운 부분도 있기 때문이다.
+  * 종류
+    * Association Rule Minging
+    * Matrix Factorization(Latent Factor) - SVD(Singular Value Decomposition), NMF(Non-Negative Matrix Factorization)
+    * Provavilistic Models - Clustring, Bayes Rules
+    * Etc - SVM, Logistic Regression, Deep Learning
+  * Matrix Factorization(Latent Facter)
+    * User와 Item이 같은 vector 공간에 표현됨.
+    * Matrix Completion 문제(User-Item matrix를 User-Latent Factor, Latent Factor-Item으로 분해).
+    * 
 
-코사인 유사도는 추천 시스템의 유사도 측정에 각장 많이 사용된다. 
 
-</br>
 
 ## 잠재 요인 협업 필터링(Latent Factor C.F)
 
@@ -108,6 +121,10 @@ SVD는 Null이 없는 행렬에만 적용할 수 있기 때문에 확률적 경�
 ndcg 참고, https://blog.naver.com/stu5073/222203260105
 
 </br>
+
+### 참고
+
+fastcampus 이재원님 강의
 
 ## 논문 및 코드
 
