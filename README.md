@@ -86,11 +86,11 @@
 
     * Matrix Completion 문제(User-Item matrix를 User-Latent Factor, Latent Factor-Item으로 분해).
 
-    * implicit feedback(ex-User가 직접 메긴 평점 말고, User가 활동하면서 자연스럽게 남는 log 데이터) 활용 할 수 있음.
+      ![latent_factor](./image/latent_factor.png)
 
-      Data의 종류(explicit and implicit)
+    * implicit feedback(ex-User가 **직접** 남긴 평점 또는 후기 같은 feedback이 아닌, User가 활동하면서 자연스럽게 남는 log 데이터, 검색 기록, 쿠키, 머무르는 시간 등) 활용 할 수 있음.
 
-      ![kinds_data](./image/kinds_data.png)
+      
 
 
 
@@ -129,6 +129,12 @@ SVD는 Null이 없는 행렬에만 적용할 수 있기 때문에 확률적 경�
 ndcg 참고, https://blog.naver.com/stu5073/222203260105
 
 </br>
+
+## Data 종류
+
+Explicit and implicit data
+
+![kinds_data](./image/kinds_data.png)
 
 ### 참고
 
