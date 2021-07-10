@@ -41,6 +41,7 @@
   > 이웃 기반 협업 필터링(index 간의 유사도 확인)
 
   * 종류
+
     * User-based : User가 Index(사용자 기반으로 유사도 계산), Item이 Feature. 나와 비슷한 평점을 메긴 다른 사람들이 어떤 종목을 선택했는지 추천.
 
     * Item-based : Item이 Index(아이템 기반으로 유사도 계산), User가 Feature. 해당 종목을 선택한 다른 고객들이 선택한 다른 종목 추천.
@@ -75,8 +76,9 @@
     * 데이터를 다양하게 학습해 새로운 추천 가능.
 
   * 종류
+
     * Association Rule Minging
-    * Matrix Factorization(Latent Factor) - SVD(Singular Value Decomposition), NMF(Non-Negative Matrix Factorization)
+    * Matrix Factorization(Latent Factor) - SVD(Singular Value Decomposition), NMF(Non-Negative Matrix Factorization), SGD(Stochastic Gradient Descent), ALS(Alterating Least Square)
     * Provavilistic Models - Clustring, Bayes Rules
     * Etc - SVM, Logistic Regression, Deep Learning
 
@@ -84,11 +86,23 @@
 
     * User와 Item이 같은 vector 공간에 표현됨.
 
+    * Latent Factor가 정확히 무엇을 의미하는지는 알 수 없음.
+
     * Matrix Completion 문제(User-Item matrix를 User-Latent Factor, Latent Factor-Item으로 분해).
 
       ![latent_factor](./image/latent_factor.png)
 
     * implicit feedback(ex-User가 **직접** 남긴 평점 또는 후기 같은 feedback이 아닌, User가 활동하면서 자연스럽게 남는 log 데이터, 검색 기록, 쿠키, 머무르는 시간 등) 활용 할 수 있음.
+
+    * SVD, NMF로 바로 행렬 분해 할 수도 있고, SGD, ALS와 같이 임의의 두 행렬에서 값을 채워 나갈 수도 있음.
+
+    * SGD
+
+      ![sgd_1](./image/sgd_1.png)
+
+      user와 item의 개별 특성을 반영하기 위해 아래와 같이 bias term을 추가해 loss function을 정의할 수도 있음.
+
+      ![sgd_2](./image/sgd_2.png)
 
       
 
