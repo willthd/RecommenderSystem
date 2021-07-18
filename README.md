@@ -8,6 +8,8 @@
 
   > 콘텐트 간의 연관성 활용해(cos similarity, 유클리디안 거리 등) 과거에 관심 있던 아이템 x와 유사한 아이템 y를 현재 시점에 추천. 어떤 feature를 추출하여 무엇이 유사한지 결정하는 것이 핵심. KNN, 나이브 베이즈 알고리즘 주로 사용.
 
+  ![cbfimg](./image/cbf_img.png)
+
   * 장점
     * 다른 유저의 데이터가 필요하지 않음.
     * 추천할 수 있는 아이템의 범위가 넓음.(Unique, New, Unpopular 아이템 모두 가능)
@@ -39,6 +41,8 @@
 * **Neighborhood-based collaborative filtering(Memory-based)**
 
   > 이웃 기반 협업 필터링(index 간의 유사도 확인)
+
+  ![cfimg](./image/cf_img.png)
 
   * 종류
 
@@ -82,7 +86,7 @@
     * Provavilistic Models - Clustring, Bayes Rules
     * Etc - SVM, Logistic Regression, Deep Learning
 
-  * Matrix Factorization(Latent Facter)
+  * Matrix Factorization(Latent Factor)
 
     * User와 Item이 같은 vector 공간에 표현됨.
 
@@ -94,7 +98,7 @@
 
     * implicit feedback(ex-User가 **직접** 남긴 평점 또는 후기 같은 feedback이 아닌, User가 활동하면서 자연스럽게 남는 log 데이터, 검색 기록, 쿠키, 머무르는 시간 등) 활용 할 수 있음.
 
-    * SVD, NMF로 바로 행렬 분해 할 수도 있고, SGD, ALS와 같이 임의의 두 행렬에서 값을 채워 나갈 수도 있음.
+    * **SVD, NMF로 바로 행렬 분해 할 수도 있고, SGD, ALS와 같이 임의의 두 행렬에서 loss를 줄여가는 방식으로 값을 채워 나갈 수도 있음.**
 
     * SGD
 
