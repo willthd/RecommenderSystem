@@ -79,7 +79,7 @@
   * 장점
     * 압축된 형태로 데이터 저장해 모델의 크기 이득.
     * 미리 학습된 모델 준비 가능해 속도 이득(Neighbothood-based는 미리 학습 개념 아님).
-    * Neighbothood-based는 데이터가 존재하는 것에 dependent가 크기 때문에 sparse 데이터 처리가 어려운 반면 Model-based는 좀 더 학습 과정을 거치며 좀 더 탁월한 처리 기대할 수 있음.
+    * Neighborhood-based는 데이터가 존재하는 것에 dependent가 크기 때문에 sparse 데이터 처리가 어려운 반면 Model-based는 좀 더 학습 과정을 거치며 좀 더 탁월한 처리 기대할 수 있음.
     * 데이터를 다양하게 학습해 새로운 추천 가능.
 
   * 종류
