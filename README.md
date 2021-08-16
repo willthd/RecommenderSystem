@@ -161,6 +161,18 @@ Explicit and implicit data
 
 ![kinds_data](./image/kinds_data.png)
 
+</br>
+
+## Contextual Information
+
+* pre-filtering & modeling
+* modeling & post-filtering
+* Context 정보와 함께 modeling
+
+
+
+
+
 ### 참고
 
 fastcampus 이재원님 강의
