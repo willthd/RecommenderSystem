@@ -158,6 +158,8 @@ ndcg 참고, https://blog.naver.com/stu5073/222203260105
 ## Data 종류
 
 Explicit and implicit data
+* Explicit: 의도적으로 수집 및 제공한 데이터. ex) 설문 조사, 회원 가입시 필수 기입 정보 등
+* Implicit: 의도적으로 수집 및 제공하지 않은 데이터. ex) 방문 및 검색 기록 등
 
 ![kinds_data](./image/kinds_data.png)
 
